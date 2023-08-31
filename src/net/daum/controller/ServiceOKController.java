@@ -9,6 +9,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import net.daum.dao.TestDAOImpl;
+import net.daum.vo.TestVO;
+
 /**
  * Servlet implementation class ServiceOKController
  */
@@ -32,6 +35,19 @@ public class ServiceOKController extends HttpServlet {
 		out.println("글제목 :<strong>" +title+"</strong><hr>");
 		out.println("내용 :<strong>" +cont+"</strong><hr>");
 		out.println("<a href='service_write'>입력</a>");
+		
+		TestVO t = new TestVO();
+		t.setTitle(title); t.setContent(cont);
+		
+		TestDAOImpl tdao = new TestDAOImpl();
+		int re = tdao.testInsert(t); //저장
+		
+		if(re==1) {
+			out.println("<script>");
+			out.println("alert('저장에 성공했습니다');");
+			out.println("location='service_List';");//목록보기로 이동
+			out.println("</script>");
+		}
 		
 		out.close();//출력 스트림 닫기
         /*		sw.jsp에서실행 --*/

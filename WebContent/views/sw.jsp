@@ -35,6 +35,8 @@
 <hr>
 	<input type="submit" value="전송">
 	<input type="Reset" value="취소">
+	<input type="button" value="목록"
+	onclick="location='service_List';">
 	
 	<%--실행; survlet control에서 실행 --%>
 </form>
